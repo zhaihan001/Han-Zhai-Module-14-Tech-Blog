@@ -1,0 +1,29 @@
+<div class="text-center">
+  <h2>{{title}}</h2>
+  <p>{{content}}</p>
+  <p>Created by {{user.name}} on {{format_date date_created}}</p>
+
+  {{#if posts.length}}
+  <div class="col-md-6 post-list">
+    {{#each posts as |post|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <p>{{post.comment}}</p>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+
+  <form class="form new-post-form">
+    <div class="form-group">
+      <label for="post-conment">Add Comment here:</label>
+      <textarea class="form-input" id="post-conment" name="post-conment"></textarea>
+    </div>
+    <p>
+      <button type="submit" class="btn btn-primary">Leave a comment</button>
+    </p>
+  </form>
+</div>
+
+<script src="./js/post.js"></script>

@@ -12,15 +12,14 @@
 <body>
   <div class="flex-column">
     <header class="display-flex justify-space-between align-center">
+      <h1>
+        Tech Blog
+      </h1>
       <nav>
-        <h1>
-          Tech Blog
-        </h1>
-        <a href="/profile">Home</a> |
-        <a href="/profile">Dashboard</a> |
+        <a href="./">Home</a> |
+        <a href="./dashboard">Dashboard</a> |
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
-        <a href="/profile">profile</a> |
         <button class="no-button" id="logout">logout</button>
         {{else}}
         <a href="/login">login</a>

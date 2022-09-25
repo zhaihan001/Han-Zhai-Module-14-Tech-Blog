@@ -4,9 +4,10 @@ header {
 
 }
 
-a {
+nav a{
   color: white;
   font-size: larger;
+  margin-right: 1em;
 }
 
 h1{
@@ -14,11 +15,20 @@ h1{
   color:rgb(77, 37, 37);
   margin-bottom: 1em;
   padding-left: 0.5em;
+  padding-right: 0.5em;
+
 }
 
-header, .project:not(:last-child) {
+.post h2{
+  margin-left:-.3em;
+}
+
+
+header, .post:not(:last-child) {
   border-bottom: 1px solid #ccc;
 }
+
+
 
 .no-button {
   background: none;
@@ -35,8 +45,9 @@ header, .project:not(:last-child) {
   text-decoration: underline;
 }
 
-.dollar-amount {
+.post-content {
   color: #056605;
   font-weight: bold;
+  font-size: x-large;
   margin-left: -5px;
 }
