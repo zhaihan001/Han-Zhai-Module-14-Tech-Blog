@@ -15,27 +15,6 @@ router.post("/", withAuth, async (req, res) => {
   }
 });
 
-router.put("/:id", withAuth, async (req, res) => {
-  try {
-    const comment = await Post.update(
-      { comment: req.body.comment },
-      {
-        where: {
-          id: req.params.id,
-          user_id: req.session.user_id,
-        },
-      }
-    );
-    if (!comment) {
-      res.status(404).json({ message: "You can not add a blank comment" });
-      return;
-    }
-    res.status(200).json(comment);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
 router.delete("/:id", withAuth, async (req, res) => {
   try {
     const postData = await Post.destroy({
