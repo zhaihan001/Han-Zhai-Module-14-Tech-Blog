@@ -11,6 +11,9 @@
       <div class="comment col-md-8">
         <p>{{comment.comment}}</p>
         <p>Created by {{comment.user.name}} on {{format_date comment.date_created}}</p>
+        {{!-- {{#if (eq comment.user.name session.data.authenticated.username)}}
+        <p>button here</p>
+        {{/if}} --}}
       </div>
     </div>
   </div>
@@ -23,9 +26,9 @@
       <textarea class="form-input" id="post-comment" name="post-comment"></textarea>
     </div>
     <p>
-      <button type="submit" data-id="{{id}}" class="btn btn-primary">Leave a comment</button>
+      <button type="submit" class="btn btn-primary">Leave a comment</button>
     </p>
   </form>
 </div>
 
-<script src="./js/comment.js"></script>
+<script src="../js/comment.js"></script>

@@ -37,10 +37,29 @@ const delButtonHandler = async (event) => {
   }
 };
 
+const editButtonHandler = async (event) => {
+  if (event.target.hasAttribute("data-id")) {
+    const id = event.target.getAttribute("data-id");
+    document.location.replace(`/dashboard/updatepost/${id}`);
+    //   const response = await fetch(`/post/${id}`);
+    //   if (response.ok) {
+    //     document.location.replace("/dashboard");
+    //   } else {
+    //     alert("Failed to delete post");
+    //   }
+    // }
+  }
+};
+
 document
   .querySelector(".new-post-form")
   .addEventListener("submit", newFormHandler);
 
-document
-  .querySelector(".post-list")
-  .addEventListener("click", delButtonHandler);
+if (document.querySelector(".post-list")) {
+  document
+    .querySelector("#editButton")
+    .addEventListener("click", editButtonHandler);
+  document
+    .querySelector("#deleteButton")
+    .addEventListener("click", delButtonHandler);
+}

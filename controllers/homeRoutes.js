@@ -51,28 +51,6 @@ router.get("/post/:id", async (req, res) => {
   }
 });
 
-// Add comment
-router.post("/post/comment/:id", withAuth, async (req, res) => {
-  try {
-    const comment = await Comment.create(
-      { comment: req.body.comment },
-      {
-        where: {
-          post_id: req.params.id,
-          user_id: req.session.user_id,
-        },
-      }
-    );
-    if (!comment) {
-      res.status(404).json({ message: "You can not add a blank comment" });
-      return;
-    }
-    res.status(200).json(comment);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
 // Use withAuth middleware to prevent access to route
 router.get("/dashboard", withAuth, async (req, res) => {
   try {
@@ -86,6 +64,22 @@ router.get("/dashboard", withAuth, async (req, res) => {
 
     res.render("dashboard", {
       ...user,
+      logged_in: true,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get("/dashboard/updatepost/:id", withAuth, async (req, res) => {
+  try {
+    // Find the logged in user based on the session ID
+    const postData = await Post.findByPk(req.params.id, {
+      where: { id: req.params.id },
+    });
+    const post = postData.get({ plain: true });
+    res.render("updatepost", {
+      post,
       logged_in: true,
     });
   } catch (err) {

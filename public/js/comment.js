@@ -1,19 +1,19 @@
 const newFormHandler = async (event) => {
   event.preventDefault();
 
-  const comment = document.querySelector("#post-comment").value.trim();
-  const id = event.target.getAttribute("id");
-  console.log(id);
+  var comment = document.querySelector("#post-comment").value.trim();
+  var url = event.target.baseURI;
+  var postId = url.substring(url.lastIndexOf("/") + 1);
   if (comment) {
-    const response = await fetch(`/post/comment/${id}`, {
+    const response = await fetch(`/api/comments/`, {
       method: "POST",
-      body: JSON.stringify({ comment }),
+      body: JSON.stringify({ comment, postId }),
       headers: {
         "Content-Type": "application/json",
       },
     });
     if (response.ok) {
-      document.location.replace(`/post/${id}`);
+      document.location.replace(`/post/${postId}`);
     } else {
       alert("Comment field can't be empty!");
     }
