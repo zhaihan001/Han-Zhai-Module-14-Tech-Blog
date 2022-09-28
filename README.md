@@ -8,7 +8,7 @@ This site is built completely from scratch and deployed it to Heroku. App follow
 
 ## Screenshot of App
 
-![image](https://user-images.githubusercontent.com/106831265/192832619-9e388643-55d2-4d2b-8033-5e0ac97a1ca6.png)
+![image](https://user-images.githubusercontent.com/106831265/192836390-80d58305-c27b-447e-8d0d-f028d6db2757.png)
 
 ## How to initiate the App
 
