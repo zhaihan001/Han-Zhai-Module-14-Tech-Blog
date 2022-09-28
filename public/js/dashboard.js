@@ -41,13 +41,6 @@ const editButtonHandler = async (event) => {
   if (event.target.hasAttribute("data-id")) {
     const id = event.target.getAttribute("data-id");
     document.location.replace(`/dashboard/updatepost/${id}`);
-    //   const response = await fetch(`/post/${id}`);
-    //   if (response.ok) {
-    //     document.location.replace("/dashboard");
-    //   } else {
-    //     alert("Failed to delete post");
-    //   }
-    // }
   }
 };
 
@@ -56,10 +49,10 @@ document
   .addEventListener("submit", newFormHandler);
 
 if (document.querySelector(".post-list")) {
-  document
-    .querySelector("#editButton")
-    .addEventListener("click", editButtonHandler);
-  document
-    .querySelector("#deleteButton")
-    .addEventListener("click", delButtonHandler);
+  let editButtons = document.querySelectorAll(".editButton");
+  let deleteButtons = document.querySelectorAll(".deleteButton");
+  for (let i = 0; i < deleteButtons.length; i++) {
+    editButtons[i].addEventListener("click", editButtonHandler);
+    deleteButtons[i].addEventListener("click", delButtonHandler);
+  }
 }

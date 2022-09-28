@@ -27,23 +27,36 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/post/:id", async (req, res) => {
+router.get("/post/:id", withAuth, async (req, res) => {
   try {
+    //export single blog data
     const postData = await Post.findByPk(req.params.id, {
       include: [{ model: User, attributes: ["name"] }],
     });
 
     const post = postData.get({ plain: true });
 
+    //export all comment within the blog above
     const commentData = await Comment.findAll({
       include: [{ model: User, attributes: ["name"] }],
       where: { post_id: req.params.id },
     });
 
     const comments = commentData.map((comment) => comment.get({ plain: true }));
+    console.log(comments);
+
+    //export current logged in user data
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ["password"] },
+    });
+
+    const user = userData.get({ plain: true });
+    console.log(user);
+
     res.render("post", {
       ...post,
       comments,
+      ...user,
       logged_in: req.session.logged_in,
     });
   } catch (err) {

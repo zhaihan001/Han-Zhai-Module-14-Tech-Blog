@@ -11,9 +11,11 @@
       <div class="comment col-md-8">
         <p>{{comment.comment}}</p>
         <p>Created by {{comment.user.name}} on {{format_date comment.date_created}}</p>
-        {{!-- {{#if (eq comment.user.name session.data.authenticated.username)}}
-        <p>button here</p>
-        {{/if}} --}}
+
+        {{#ifEquals comment.user.id user.id}}
+        <button class="btn btn-danger deleteButton" data-id={{comment.id}}>Delete Comment</button>
+        {{/ifEquals}}
+
       </div>
     </div>
   </div>
