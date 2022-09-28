@@ -6,6 +6,10 @@ This is the application that developers can publish their blog posts and comment
 
 This site is built completely from scratch and deployed it to Heroku. App follows the MVC paradigm in its architectural structure, using Handlebars.js as the templating language, Sequelize as the ORM, and the express-session npm package for authentication.
 
+## Live deployment on Heroku
+
+https://fathomless-badlands-79755.herokuapp.com/
+
 ## Screenshot of App
 
 ![image](https://user-images.githubusercontent.com/106831265/192836390-80d58305-c27b-447e-8d0d-f028d6db2757.png)
